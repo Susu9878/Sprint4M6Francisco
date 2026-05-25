@@ -14,7 +14,7 @@ import lombok.Data;
 @Builder
 public class VideogameDTO {
     private String title;
-    private String genres;
+    private String genre;
     private int releaseYear;
     private String studio;
     private double price;
@@ -29,12 +29,12 @@ public class VideogameDTO {
         this.title = title;
     }
 
-    public ArrayList<String> getGenres() {
-        return genres;
+    public String getGenres() {
+        return genre;
     }
 
-    public void setGenres(ArrayList<String> genres) {
-        this.genres = genres;
+    public void setGenres(String genre) {
+        this.genre = genre;
     }
 
     public int getReleaseYear() {
