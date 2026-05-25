@@ -33,25 +33,24 @@ public class VideogameRepository {
                                                         .releaseYear(2024)
                                                         .studio("Dumativa")
 
-                                                        .price()
+                                                        .price(29.99)
 
-                                                        .description("")
-                                                        .updatedAt(LocalDateTime.now())
+                                                        .description("Enigma of Fear is a game of investigation and mystery in Pixel Art/3D where your deduction is your guide. Play and enjoy this story in the way that you want to: analyze thoroughly every detail in an engaging narrative, ask partner agents for help, face enemies or try to go through them stealthily.")
+                                                        .ageRating("T")
                                                         .build(),
 
                                         Videogame.builder()
                                                         .id(2L)
-                                                        .title("Mad Max")
-                                                        .genre("ACTION")
+                                                        .title("Professor Layton and the Curious Village")
+                                                        .genre("Puzzle")
 
-                                                        // ACTION FIELDS
-                                                        .weapon("Shotgun")
-                                                        .explosions(120)
+                                                        .releaseYear(2007)
+                                                        .studio("Level-5")
 
-                                                        .imageUrl("https://example.com/madmax.jpg")
+                                                        .price(9.99)
 
-                                                        .createdAt(LocalDateTime.now())
-                                                        .updatedAt(LocalDateTime.now())
+                                                        .description("The game centers on Professor Hershel Layton, and his self-styled apprentice, Luke Triton, investigating the fictional village of St. Mystere about an artifact known as the Golden Apple, an heirloom that the late Baron had left as a test to determine who would receive his fortune after his death. The residents of St. Mystere particularly enjoy brain teasers and will often ask the player to help solve them by using the system's touchscreen to submit answers in exchange for their cooperation in the search. ")
+                                                        .ageRating("E")
                                                         .build(),
 
                                         /*
@@ -62,33 +61,32 @@ public class VideogameRepository {
 
                                         Videogame.builder()
                                                         .id(3L)
-                                                        .title("The Mask")
-                                                        .genre("COMEDY")
+                                                        .title("Earthbound")
+                                                        .genre("RPG")
 
-                                                        // COMEDY FIELDS
-                                                        .typeOfComedy("Slapstick")
-                                                        .memeCount(80)
+                                                        .releaseYear(1994)
+                                                        .studio("Ape Inc., HAL Laboratory")
 
-                                                        .imageUrl("https://example.com/mask.jpg")
+                                                        .price(9.99)
 
-                                                        .createdAt(LocalDateTime.now())
-                                                        .updatedAt(LocalDateTime.now())
+                                                        .description("EarthBound, originally released in Japan as Mother 2: Gīgu no Gyakushū,[nb 2][1][2] is a 1994 role-playing video game developed by Ape Inc. (now Creatures Inc.) and HAL Laboratory and published by Nintendo for the Super Nintendo Entertainment System. The second entry in the Mother series, it follows a young boy named Ness and his party of Paula, Jeff and Poo, as they travel the world to collect melodies from eight Sanctuaries in order to defeat the universal cosmic destroyer Giygas. ")
+                                                        .ageRating("T")
                                                         .build(),
 
                                         Videogame.builder()
                                                         .id(4L)
-                                                        .title("Superbad")
-                                                        .genre("COMEDY")
+                                                        .title("Deltarune")
+                                                        .genre("RPG")
 
-                                                        // COMEDY FIELDS
-                                                        .typeOfComedy("Teen Comedy")
-                                                        .memeCount(95)
+                                                        .releaseYear(2025)
+                                                        .studio("tobyfox")
 
-                                                        .imageUrl("https://example.com/superbad.jpg")
+                                                        .price(24.99)
 
-                                                        .createdAt(LocalDateTime.now())
-                                                        .updatedAt(LocalDateTime.now())
+                                                        .description("Fight (or spare) alongside new characters in UNDERTALE's parallel story, DELTARUNE...!")
+                                                        .ageRating("T")
                                                         .build(),
+
 
                                         /*
                                          * =================================================
@@ -124,9 +122,9 @@ public class VideogameRepository {
 
                                                         .createdAt(LocalDateTime.now())
                                                         .updatedAt(LocalDateTime.now())
-                                                        .build())
+                                                        .build(),
 
-                                                /*
+                                        /*
                                          * =================================================
                                          * FIGHTER 
                                          * =================================================
@@ -160,7 +158,7 @@ public class VideogameRepository {
 
                                                         .createdAt(LocalDateTime.now())
                                                         .updatedAt(LocalDateTime.now())
-                                                        .build())
+                                                        .build(),
 
 
                                                                                                 /*
@@ -170,34 +168,33 @@ public class VideogameRepository {
                                          */
 
                                         Videogame.builder()
-                                                        .id(5L)
-                                                        .title("The Conjuring")
-                                                        .genre("HORROR")
+                                                        .id(9L)
+                                                        .title("Hades")
+                                                        .genre("Rougelike")
 
-                                                        // HORROR FIELDS
-                                                        .monster("Demon")
-                                                        .goreLevel(70)
+                                                        .releaseYear(2020)
+                                                        .studio("Supergiant Games")
 
-                                                        .imageUrl("https://example.com/conjuring.jpg")
+                                                        .price(24.99)
 
-                                                        .createdAt(LocalDateTime.now())
-                                                        .updatedAt(LocalDateTime.now())
+                                                        .description("Hades is a god-like rogue-like dungeon crawler that combines the best aspects of Supergiant's critically acclaimed titles, including the fast-paced action of Bastion, the rich atmosphere and depth of Transistor, and the character-driven storytelling of Pyre.")
+                                                        .ageRating("T")
                                                         .build(),
 
                                         Videogame.builder()
-                                                        .id(6L)
-                                                        .title("It")
-                                                        .genre("HORROR")
+                                                        .id(10L)
+                                                        .title("The Binding of Isaac")
+                                                        .genre("Rougelike")
 
-                                                        // HORROR FIELDS
-                                                        .monster("Clown")
-                                                        .goreLevel(90)
+                                                        .releaseYear(2011)
+                                                        .studio("Edmund McMillen")
 
-                                                        .imageUrl("https://example.com/it.jpg")
+                                                        .price(7.49)
 
-                                                        .createdAt(LocalDateTime.now())
-                                                        .updatedAt(LocalDateTime.now())
-                                                        .build();
+                                                        .description("When Isaac’s mother starts hearing the voice of God demanding a sacrifice be made to prove her faith, Isaac escapes into the basement facing droves of deranged enemies, lost brothers and sisters, his fears, and eventually his mother.\r\n" + //
+                                                                                                                                "The Binding of Isaac is a randomly generated action RPG shooter with heavy Rogue-like elements. Following Isaac on his journey players will find bizarre treasures that change Isaac’s form giving him super human abilities and enabling him to fight off droves of mysterious creatures, discover secrets and fight his way to safety.")
+                                                        .ageRating("M")
+                                                        .build()));
 
         public List<Videogame> getPostsByGenre(String genre) {
 
@@ -216,7 +213,6 @@ public class VideogameRepository {
 
         public Videogame save(Videogame post) {
                 post.setId(this.getNextId());
-                post.setCreatedAt(LocalDateTime.now());
 
                 POSTS.add(post);
                 return post;
