@@ -17,16 +17,12 @@ public class VideogameMapper implements Function<VideogameDTO, Videogame> {
     public Videogame apply(VideogameDTO postDto) {
         return Videogame.builder()
                 .title(postDto.getTitle())
-                .author(postDto.getAuthor())
-                .content(postDto.getContent())
                 .genre(postDto.getGenre())
-                .imageUrl(postDto.getImageUrl())
-                .weapon(postDto.getWeapon())
-                .explosions(postDto.getExplosions())
-                .typeOfComedy(postDto.getTypeOfComedy())
-                .memeCount(postDto.getMemeCount())
-                .monster(postDto.getMonster())
-                .goreLevel(postDto.getGoreLevel())
+                .releaseYear(postDto.getReleaseYear())
+                .studio(postDto.getStudio())
+                .price(postDto.getPrice())
+                .description(postDto.getDescription())
+                .ageRating(postDto.getAgeRating())
                 .build();
     }
 }
