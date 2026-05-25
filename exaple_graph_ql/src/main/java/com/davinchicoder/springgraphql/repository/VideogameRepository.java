@@ -21,22 +21,21 @@ public class VideogameRepository {
 
                                         /*
                                          * =================================================
-                                         * ACTION MOVIES
+                                         * PUZZLES
                                          * =================================================
                                          */
 
                                         Videogame.builder()
                                                         .id(1L)
-                                                        .title("John Wick")
-                                                        .genre("ACTION")
+                                                        .title("Enigma do Medo")
+                                                        .genre("Puzzle")
 
-                                                        // ACTION FIELDS
-                                                        .weapon("Pistol")
-                                                        .explosions(45)
+                                                        .releaseYear(2024)
+                                                        .studio("Dumativa")
 
-                                                        .imageUrl("https://example.com/johnwick.jpg")
+                                                        .price()
 
-                                                        .createdAt(LocalDateTime.now())
+                                                        .description("")
                                                         .updatedAt(LocalDateTime.now())
                                                         .build(),
 
@@ -125,7 +124,7 @@ public class VideogameRepository {
 
                                                         .createdAt(LocalDateTime.now())
                                                         .updatedAt(LocalDateTime.now())
-                                                        .build()));
+                                                        .build())
 
                                                 /*
                                          * =================================================
@@ -161,7 +160,7 @@ public class VideogameRepository {
 
                                                         .createdAt(LocalDateTime.now())
                                                         .updatedAt(LocalDateTime.now())
-                                                        .build()));
+                                                        .build())
 
 
                                                                                                 /*
@@ -198,7 +197,7 @@ public class VideogameRepository {
 
                                                         .createdAt(LocalDateTime.now())
                                                         .updatedAt(LocalDateTime.now())
-                                                        .build()));
+                                                        .build();
 
         public List<Videogame> getPostsByGenre(String genre) {
 
