@@ -57,7 +57,7 @@ public class VideogameRepository {
 
                                         /*
                                          * =================================================
-                                         * COMEDY MOVIES
+                                         * RPG
                                          * =================================================
                                          */
 
@@ -93,7 +93,80 @@ public class VideogameRepository {
 
                                         /*
                                          * =================================================
-                                         * HORROR MOVIES
+                                         * VISUAL NOVELS
+                                         * =================================================
+                                         */
+
+                                        Videogame.builder()
+                                                        .id(5L)
+                                                        .title("The Conjuring")
+                                                        .genre("HORROR")
+
+                                                        // HORROR FIELDS
+                                                        .monster("Demon")
+                                                        .goreLevel(70)
+
+                                                        .imageUrl("https://example.com/conjuring.jpg")
+
+                                                        .createdAt(LocalDateTime.now())
+                                                        .updatedAt(LocalDateTime.now())
+                                                        .build(),
+
+                                        Videogame.builder()
+                                                        .id(6L)
+                                                        .title("It")
+                                                        .genre("HORROR")
+
+                                                        // HORROR FIELDS
+                                                        .monster("Clown")
+                                                        .goreLevel(90)
+
+                                                        .imageUrl("https://example.com/it.jpg")
+
+                                                        .createdAt(LocalDateTime.now())
+                                                        .updatedAt(LocalDateTime.now())
+                                                        .build()));
+
+                                                /*
+                                         * =================================================
+                                         * FIGHTER 
+                                         * =================================================
+                                         */
+
+                                        Videogame.builder()
+                                                        .id(5L)
+                                                        .title("The Conjuring")
+                                                        .genre("HORROR")
+
+                                                        // HORROR FIELDS
+                                                        .monster("Demon")
+                                                        .goreLevel(70)
+
+                                                        .imageUrl("https://example.com/conjuring.jpg")
+
+                                                        .createdAt(LocalDateTime.now())
+                                                        .updatedAt(LocalDateTime.now())
+                                                        .build(),
+
+                                        Videogame.builder()
+                                                        .id(6L)
+                                                        .title("It")
+                                                        .genre("HORROR")
+
+                                                        // HORROR FIELDS
+                                                        .monster("Clown")
+                                                        .goreLevel(90)
+
+                                                        .imageUrl("https://example.com/it.jpg")
+
+                                                        .createdAt(LocalDateTime.now())
+                                                        .updatedAt(LocalDateTime.now())
+                                                        .build()));
+
+
+                                                                                                /*
+                                         * =================================================
+                                         * ROGUELIKE
                                          * =================================================
                                          */
 
