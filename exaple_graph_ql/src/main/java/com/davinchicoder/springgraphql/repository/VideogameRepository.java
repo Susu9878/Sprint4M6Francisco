@@ -3,7 +3,6 @@ package com.davinchicoder.springgraphql.repository;
 import com.davinchicoder.springgraphql.entity.Videogame;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -95,23 +94,20 @@ public class VideogameRepository {
                                          */
 
                                         Videogame.builder()
-                                                        .id(1L)
+                                                        .id(5L)
                                                         .title("Z.A.T.O: I love the world and everything in it")
                                                         .genre("Mystery")
 
-                                                        .releaseYear("2025")
+                                                        .releaseYear(2025)
                                                         .studio("Ferry // Nopanamaman")
 
                                                         .price(0)
                                                         .description("USSR, 1986. A girl goes missing in the closed city of Vorkuta-5, yet not a soul seems to be concerned. Uncover the mystery behind her disappearance and transmit your signal to the universe.")
                                                         .ageRating("T")
-
-                                                        .createdAt(LocalDateTime.now())
-                                                        .updatedAt(LocalDateTime.now())
                                                         .build(),
 
                                         Videogame.builder()
-                                                        .id(2L)
+                                                        .id(6L)
                                                         .title("Umineko When They Cry")
                                                         .genre("Murder Mystery")
 
@@ -121,13 +117,10 @@ public class VideogameRepository {
                                                         .price(270)
                                                         .description("Welcome to the world of \"Umineko When They Cry\" (When Seagulls Cry) Welcome to the Rokkenjima of October 4, 1986. You have been given a chance to catch a glimpse of the family conference held annually by the Ushiromiya family. The remaining life in the old family head who has built up a vast fortune is very slim. To his children, the greatest point of contention at this family conference is the distribution of his inheritance.Everyone desires all that money, no one relents, and no one believes. Who will gain the old head's vast inheritance? Where is the 10 tons of gold that the old head is said to have hidden? Can the unnerving riddle of the epitaph which is said to point to the location of that gold be solved? In the midst of this, a suspicious letter is sent from one claiming to be a witch. The presence of a 19th person on this island, which should only have 18, begins to hang in the air. Brutal murders repeat, and unsolvable riddles are left at the scene. How many will die? How many will live? Or will everyone die? Is the culprit one of the 18, or not? Is the culprit a \"human\", or a \"witch\"? Please, enjoy this isolated island, western mansion,mystery-suspense gadget of the good old days to the fullest.")
                                                         .ageRating("M")
-
-                                                        .createdAt(LocalDateTime.now())
-                                                        .updatedAt(LocalDateTime.now())
                                                         .build(),
 
                                         Videogame.builder()
-                                                        .id(3L)
+                                                        .id(7L)
                                                         .title("Butterfly Soup")
                                                         .genre("Slice of life")
 
@@ -137,13 +130,10 @@ public class VideogameRepository {
                                                         .price(0)
                                                         .description("A visual novel about gay asian girls playing baseball and falling in love. ")
                                                         .ageRating("T")
-
-                                                        .createdAt(LocalDateTime.now())
-                                                        .updatedAt(LocalDateTime.now())
                                                         .build(),
 
                                         Videogame.builder()
-                                                        .id(4L)
+                                                        .id(8L)
                                                         .title("We know the devil")
                                                         .genre("Drama")
 
@@ -153,14 +143,11 @@ public class VideogameRepository {
                                                         .price(100)
                                                         .description("WE KNOW THE DEVIL is a visual novel about teens reluctantly fighting the devil at summer camp. Follow meangirl Neptune, tomboy Jupiter, and shy shy Venus as they get to know each other--but one always gets left out.")
                                                         .ageRating("T")
-
-                                                        .createdAt(LocalDateTime.now())
-                                                        .updatedAt(LocalDateTime.now())
                                                         .build(),
 
 
                                         Videogame.builder()
-                                                        .id(5L)
+                                                        .id(9L)
                                                         .title("Heaven will be mine")
                                                         .genre("Indie")
 
@@ -170,13 +157,10 @@ public class VideogameRepository {
                                                         .price(100)
                                                         .description("HEAVEN WILL BE MINE is a visual novel about making terrible life decisions in the midst of a hot-blooded battle between giant robots. Select one of three terribly behaved girls to fight and/or make out with each other in their struggle for the fate of space.")
                                                         .ageRating("T")
-
-                                                        .createdAt(LocalDateTime.now())
-                                                        .updatedAt(LocalDateTime.now())
                                                         .build(),
 
                                         Videogame.builder()
-                                                        .id(6L)
+                                                        .id(10L)
                                                         .title("Slay the princess")
                                                         .genre("Psychological Horror")
 
@@ -186,49 +170,41 @@ public class VideogameRepository {
                                                         .price(208)
                                                         .description("You're here to slay the princess. Don't believe her lies.")
                                                         .ageRating("M")
-
-                                                        .createdAt(LocalDateTime.now())
-                                                        .updatedAt(LocalDateTime.now())
                                                         .build(),
-<<<<<<< HEAD
 
                                         /*
-=======
                                                 /*
->>>>>>> 892c1e0e74e91b66aeb059bd42f966bb095bec16
                                          * =================================================
                                          * FIGHTER 
                                          * =================================================
                                          */
 
                                         Videogame.builder()
-                                                        .id(5L)
-                                                        .title("The Conjuring")
-                                                        .genre("HORROR")
+                                                        .id(11L)
+                                                        .title("Street Fighter 6")
+                                                        .genre("Fighting")
 
-                                                        // HORROR FIELDS
-                                                        .monster("Demon")
-                                                        .goreLevel(70)
+                                                        .releaseYear(2023)
+                                                        .studio("CAPCOM Co., Ltd.")
 
-                                                        .imageUrl("https://example.com/conjuring.jpg")
+                                                        .price(59.99)
 
-                                                        .createdAt(LocalDateTime.now())
-                                                        .updatedAt(LocalDateTime.now())
+                                                        .description("Here comes Capcom’s newest challenger! Street Fighter™ 6 launches worldwide on June 2nd, 2023 and represents the next evolution of the series. ")
+                                                        .ageRating("T")
                                                         .build(),
 
                                         Videogame.builder()
-                                                        .id(6L)
-                                                        .title("It")
-                                                        .genre("HORROR")
+                                                        .id(12L)
+                                                        .title("Super Smash Bros. Ultimate")
+                                                        .genre("Fighting")
 
-                                                        // HORROR FIELDS
-                                                        .monster("Clown")
-                                                        .goreLevel(90)
+                                                        .releaseYear(2018)
+                                                        .studio("Bandai Namco Studios, Sora Ltd.")
 
-                                                        .imageUrl("https://example.com/it.jpg")
+                                                        .price(59.99)
 
-                                                        .createdAt(LocalDateTime.now())
-                                                        .updatedAt(LocalDateTime.now())
+                                                        .description("Gaming icons clash in the ultimate brawl you can play anytime, anywhere! Smash rivals off the stage as new characters Simon Belmont and King K. Rool join Inkling, Ridley, and every fighter in Super Smash Bros. history. Enjoy enhanced speed and combat at new stages based on the Castlevania series, Super Mario Odyssey, and more!")
+                                                        .ageRating("E10+")
                                                         .build(),
 
 
@@ -239,7 +215,7 @@ public class VideogameRepository {
                                          */
 
                                         Videogame.builder()
-                                                        .id(9L)
+                                                        .id(13L)
                                                         .title("Hades")
                                                         .genre("Rougelike")
 
@@ -253,7 +229,7 @@ public class VideogameRepository {
                                                         .build(),
 
                                         Videogame.builder()
-                                                        .id(10L)
+                                                        .id(14L)
                                                         .title("The Binding of Isaac")
                                                         .genre("Rougelike")
 
@@ -275,36 +251,15 @@ public class VideogameRepository {
                                 .toList();
         }
 
-        public List<Videogame> getRecentPosts(int count, int offset) {
-                return POSTS.stream()
-                                .filter(post -> post.getDeletedAt() == null)
-                                .toList()
-                                .subList(offset, Math.min(offset + count, POSTS.size()));
-        }
 
-        public Videogame save(Videogame post) {
-                post.setId(this.getNextId());
 
-                POSTS.add(post);
-                return post;
-        }
-
-        public Optional<Videogame> delete(Long id) {
-                Optional<Videogame> postToDelete = POSTS.stream()
-                                .filter(post -> post.getId().equals(id))
-                                .findFirst();
-
-                postToDelete.ifPresent(post -> post.setDeletedAt(LocalDateTime.now()));
-
-                return postToDelete;
-        }
 
         public Optional<Videogame> getById(Long id) {
                 return POSTS.stream().filter(post -> post.getId().equals(id)).findFirst();
         }
 
         public List<Videogame> getAll() {
-                return POSTS.stream().filter(post -> post.getDeletedAt() == null).toList();
+                return POSTS.stream().toList();
         }
 
         private Long getNextId() {

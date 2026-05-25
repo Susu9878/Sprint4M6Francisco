@@ -3,9 +3,6 @@ package com.davinchicoder.springgraphql.entity;
 import lombok.Builder;
 import lombok.Data;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-
 /**
  * Entity: representa el modelo interno/persistente (BD) con identidad y estado;
  * DTO: objeto ligero para transferir datos entre capas sin exponer la entidad
