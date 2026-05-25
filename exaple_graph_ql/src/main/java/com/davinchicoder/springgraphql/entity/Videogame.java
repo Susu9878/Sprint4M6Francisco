@@ -17,7 +17,7 @@ public class Videogame {
 
     private Long id;
     private String title;
-    private ArrayList<String> genres;
+    private String genre;
     private int releaseYear;
     private String studio;
     private double price;

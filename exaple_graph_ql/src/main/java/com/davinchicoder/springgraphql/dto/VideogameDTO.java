@@ -14,7 +14,7 @@ import lombok.Data;
 @Builder
 public class VideogameDTO {
     private String title;
-    private ArrayList<String> genres;
+    private String genres;
     private int releaseYear;
     private String studio;
     private double price;
