@@ -1,6 +1,6 @@
 package com.davinchicoder.springgraphql.IT;
 
-import com.davinchicoder.springgraphql.entity.Post;
+import com.davinchicoder.springgraphql.entity.Videogame;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -33,7 +33,7 @@ public class PostIT {
         graphQlTester.document(query)
                 .execute()
                 .path("data.getAllPosts")
-                .entityList(Post.class)
+                .entityList(Videogame.class)
                 .hasSize(3);
     }
 
@@ -58,7 +58,7 @@ public class PostIT {
         graphQlTester.document(mutation)
                 .execute()
                 .path("data.savePost")
-                .entity(Post.class)
+                .entity(Videogame.class)
                 .satisfies(post -> {
                     assertNotNull(post.getId());
                     assertEquals("Test Post", post.getTitle());

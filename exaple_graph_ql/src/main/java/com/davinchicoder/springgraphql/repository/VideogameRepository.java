@@ -1,6 +1,6 @@
 package com.davinchicoder.springgraphql.repository;
 
-import com.davinchicoder.springgraphql.entity.Post;
+import com.davinchicoder.springgraphql.entity.Videogame;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
@@ -13,9 +13,9 @@ import java.util.Optional;
  * de datos.
  */
 @Repository
-public class PostRepository {
+public class VideogameRepository {
 
-        private final List<Post> POSTS = new ArrayList<>(
+        private final List<Videogame> POSTS = new ArrayList<>(
 
                         List.of(
 
@@ -25,7 +25,7 @@ public class PostRepository {
                                          * =================================================
                                          */
 
-                                        Post.builder()
+                                        Videogame.builder()
                                                         .id(1L)
                                                         .title("John Wick")
                                                         .genre("ACTION")
@@ -40,7 +40,7 @@ public class PostRepository {
                                                         .updatedAt(LocalDateTime.now())
                                                         .build(),
 
-                                        Post.builder()
+                                        Videogame.builder()
                                                         .id(2L)
                                                         .title("Mad Max")
                                                         .genre("ACTION")
@@ -61,7 +61,7 @@ public class PostRepository {
                                          * =================================================
                                          */
 
-                                        Post.builder()
+                                        Videogame.builder()
                                                         .id(3L)
                                                         .title("The Mask")
                                                         .genre("COMEDY")
@@ -76,7 +76,7 @@ public class PostRepository {
                                                         .updatedAt(LocalDateTime.now())
                                                         .build(),
 
-                                        Post.builder()
+                                        Videogame.builder()
                                                         .id(4L)
                                                         .title("Superbad")
                                                         .genre("COMEDY")
@@ -97,7 +97,7 @@ public class PostRepository {
                                          * =================================================
                                          */
 
-                                        Post.builder()
+                                        Videogame.builder()
                                                         .id(5L)
                                                         .title("The Conjuring")
                                                         .genre("HORROR")
@@ -112,7 +112,7 @@ public class PostRepository {
                                                         .updatedAt(LocalDateTime.now())
                                                         .build(),
 
-                                        Post.builder()
+                                        Videogame.builder()
                                                         .id(6L)
                                                         .title("It")
                                                         .genre("HORROR")
@@ -127,7 +127,7 @@ public class PostRepository {
                                                         .updatedAt(LocalDateTime.now())
                                                         .build()));
 
-        public List<Post> getPostsByGenre(String genre) {
+        public List<Videogame> getPostsByGenre(String genre) {
 
                 return POSTS.stream()
                                 .filter(post -> post.getGenre()
@@ -135,14 +135,14 @@ public class PostRepository {
                                 .toList();
         }
 
-        public List<Post> getRecentPosts(int count, int offset) {
+        public List<Videogame> getRecentPosts(int count, int offset) {
                 return POSTS.stream()
                                 .filter(post -> post.getDeletedAt() == null)
                                 .toList()
                                 .subList(offset, Math.min(offset + count, POSTS.size()));
         }
 
-        public Post save(Post post) {
+        public Videogame save(Videogame post) {
                 post.setId(this.getNextId());
                 post.setCreatedAt(LocalDateTime.now());
 
@@ -150,8 +150,8 @@ public class PostRepository {
                 return post;
         }
 
-        public Optional<Post> delete(Long id) {
-                Optional<Post> postToDelete = POSTS.stream()
+        public Optional<Videogame> delete(Long id) {
+                Optional<Videogame> postToDelete = POSTS.stream()
                                 .filter(post -> post.getId().equals(id))
                                 .findFirst();
 
@@ -160,17 +160,17 @@ public class PostRepository {
                 return postToDelete;
         }
 
-        public Optional<Post> getById(Long id) {
+        public Optional<Videogame> getById(Long id) {
                 return POSTS.stream().filter(post -> post.getId().equals(id)).findFirst();
         }
 
-        public List<Post> getAll() {
+        public List<Videogame> getAll() {
                 return POSTS.stream().filter(post -> post.getDeletedAt() == null).toList();
         }
 
         private Long getNextId() {
                 System.out.println("test");
-                return POSTS.stream().mapToLong(Post::getId).max().orElse(0L) + 1L;
+                return POSTS.stream().mapToLong(Videogame::getId).max().orElse(0L) + 1L;
         }
 
 }
