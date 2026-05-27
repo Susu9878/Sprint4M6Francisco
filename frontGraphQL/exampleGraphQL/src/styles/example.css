@@ -1,0 +1,50 @@
+.puzzleButton{
+    margin: 5px;
+    font-family: "VCR";
+    font-size: 20px;
+    background-color: #ff24a7;
+    border-color: #ff6cba;
+    border-radius: 2px;
+    color:#000923;
+}
+
+.rpgButton{
+    margin: 5px;
+    font-family: "VCR";
+    font-size: 20px;
+    background-color: #ffef3e;
+    border-color: #fff586;
+    border-radius: 2px;
+    color:#231400;
+}
+
+.vnButton{
+    margin: 5px;
+    font-family: "VCR";
+    font-size: 20px;
+    background-color: #bb00ff;
+    border-color: #d06cff;
+    border-radius: 2px;
+    color:#190023;
+}
+
+.fighterButton{
+    margin: 5px;
+    font-family: "VCR";
+    font-size: 20px;
+    background-color: #ff5e00;
+    border-color: #ffba6c;
+    border-radius: 2px;
+    color:#230f00;
+}
+
+.roguelikeButton{
+    margin: 5px;
+    font-family: "VCR";
+    font-size: 20px;
+    background-color: #00ffaa;
+    border-color: #6cffe2;
+    border-radius: 2px;
+    color:#002317;
+}
+

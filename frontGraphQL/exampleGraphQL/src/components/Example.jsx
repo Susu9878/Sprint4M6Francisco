@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "../styles/example.css"
 
 export default function Example() {
 
@@ -272,30 +273,35 @@ export default function Example() {
 
                 <button
                     onClick={() => setGenre("PUZZLES")}
+                    className="puzzleButton"
                 >
                     Puzzles
                 </button>
 
                 <button
                     onClick={() => setGenre("RPG")}
+                    className="rpgButton"
                 >
                     RPG
                 </button>
 
                 <button
                     onClick={() => setGenre("VISUAL NOVEL")}
+                    className="vnButton"
                 >
                     Visual Novels
                 </button>
 
                 <button
                     onClick={() => setGenre("FIGHTER")}
+                    className="fighterButton"
                 >
-                    Fighting
+                    Fighter
                 </button>
 
                 <button
                     onClick={() => setGenre("ROGUELIKE")}
+                    className="roguelikeButton"
                 >
                     Roguelike
                 </button>

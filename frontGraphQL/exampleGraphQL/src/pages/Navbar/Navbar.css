@@ -20,7 +20,8 @@
   /* Contenedor de enlaces */
     .nav-container {
     display: flex;
-    gap: 40px; /* Espaciado entre los enlaces */
+    gap: 20px; /* Espaciado entre los enlaces */
+    margin-right: 20px;
     }
 
   /* Enlaces de navegación */
@@ -35,8 +36,8 @@
 
   /* Efecto hover */
     .nav-link:hover {
-    background: rgba(255, 255, 255, 0.2);
-    color: black;
+    background: #3998ff;
+    color: #002b58;
     }
 
   /* Página activa */
