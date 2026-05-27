@@ -1,6 +1,6 @@
 /* Barra de navegación */
   .navbar {
-      background: #007bff; /* Azul sólido */
+      background: #2c4055; /* Azul sólido */
       padding: 20px 0;
       position: fixed;
       width: 100%;
@@ -36,7 +36,7 @@
 
   /* Efecto hover */
     .nav-link:hover {
-    background: #3998ff;
+    background: #63a0e1;
     color: #002b58;
     }
 
