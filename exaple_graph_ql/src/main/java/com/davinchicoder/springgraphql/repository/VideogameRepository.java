@@ -1,11 +1,11 @@
 package com.davinchicoder.springgraphql.repository;
 
-import com.davinchicoder.springgraphql.entity.Videogame;
-import org.springframework.stereotype.Repository;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.stereotype.Repository;
+
+import com.davinchicoder.springgraphql.entity.Videogame;
 
 /**
  * Repositorio en memoria que simula operaciones CRUD sobre Post sin usar base
@@ -85,8 +85,63 @@ public class VideogameRepository {
                                                         .description("Fight (or spare) alongside new characters in UNDERTALE's parallel story, DELTARUNE...!")
                                                         .ageRating("T")
                                                         .build(),
+                                        Videogame.builder()
+                                                        .id(5L)
+                                                        .title("Undertale")
+                                                        .genre("RPG")
 
+                                                        .releaseYear(2025)
+                                                        .studio("tobyfox")
 
+                                                        .price(9.99)
+
+                                                        .description("UNDERTALE! The RPG game where you don't have to destroy anyone.")
+                                                        .ageRating("T")
+                                                        .build(),
+
+                                        Videogame.builder()
+                                                        .id(6L)
+                                                        .title("In Stars and Time")
+                                                        .genre("RPG")
+
+                                                        .releaseYear(2023)
+                                                        .studio("insertdisc5")
+
+                                                        .price(19.99)
+
+                                                        .description("Live with the ever-present burden of being trapped in a time loop only you can know about in this turn-based RPG. Create a better future for you and your friends. Find hope where there is none left. Pray to the stars and free yourself from time")
+                                                        .ageRating("T")
+                                                        .build(),
+
+                                        Videogame.builder()
+                                                        .id(7L)
+                                                        .title("OFF")
+                                                        .genre("RPG")
+
+                                                        .releaseYear(2008)
+                                                        .studio("Unproductive Fun Time")
+
+                                                        .price(14.99)
+
+                                                        .description("“I'm the Batter. I've been entrusted with a sacred mission.” -- One of the most influential RPGs of the last 20 years is finally coming to Steam. Take control of the Batter as he seeks to purify an uncanny and hopeless world haunted by specters, guided by a cryptic, grinning cat called The Judge.")
+                                                        .ageRating("T")
+                                                        .build(),       
+
+                                        Videogame.builder()
+                                                        .id(8L)
+                                                        .title("Yume Nikki")
+                                                        .genre("RPG")
+
+                                                        .releaseYear(2004)
+                                                        .studio("Kikiyama")
+
+                                                        .price(0)
+
+                                                        .description("This is a game in which you traverse the extremely dark world inside a dream.")
+                                                        .ageRating("T")
+                                                        .build(),                                                            
+                        
+                                                        
                                         /*
                                          * =================================================
                                          * VISUAL NOVELS
@@ -94,7 +149,7 @@ public class VideogameRepository {
                                          */
 
                                         Videogame.builder()
-                                                        .id(5L)
+                                                        .id(9L)
                                                         .title("Z.A.T.O: I love the world and everything in it")
                                                         .genre("Mystery")
 
@@ -107,20 +162,20 @@ public class VideogameRepository {
                                                         .build(),
 
                                         Videogame.builder()
-                                                        .id(6L)
+                                                        .id(10L)
                                                         .title("Umineko When They Cry")
                                                         .genre("Murder Mystery")
 
                                                         .releaseYear(2007)
                                                         .studio("07th Expansion")
 
-                                                        .price(270)
+                                                        .price(32.98)
                                                         .description("Welcome to the world of \"Umineko When They Cry\" (When Seagulls Cry) Welcome to the Rokkenjima of October 4, 1986. You have been given a chance to catch a glimpse of the family conference held annually by the Ushiromiya family. The remaining life in the old family head who has built up a vast fortune is very slim. To his children, the greatest point of contention at this family conference is the distribution of his inheritance.Everyone desires all that money, no one relents, and no one believes. Who will gain the old head's vast inheritance? Where is the 10 tons of gold that the old head is said to have hidden? Can the unnerving riddle of the epitaph which is said to point to the location of that gold be solved? In the midst of this, a suspicious letter is sent from one claiming to be a witch. The presence of a 19th person on this island, which should only have 18, begins to hang in the air. Brutal murders repeat, and unsolvable riddles are left at the scene. How many will die? How many will live? Or will everyone die? Is the culprit one of the 18, or not? Is the culprit a \"human\", or a \"witch\"? Please, enjoy this isolated island, western mansion,mystery-suspense gadget of the good old days to the fullest.")
                                                         .ageRating("M")
                                                         .build(),
 
                                         Videogame.builder()
-                                                        .id(7L)
+                                                        .id(11L)
                                                         .title("Butterfly Soup")
                                                         .genre("Slice of life")
 
@@ -133,41 +188,41 @@ public class VideogameRepository {
                                                         .build(),
 
                                         Videogame.builder()
-                                                        .id(8L)
+                                                        .id(12L)
                                                         .title("We know the devil")
                                                         .genre("Drama")
 
                                                         .releaseYear(2016)
                                                         .studio("Worst Girls Games")
 
-                                                        .price(100)
+                                                        .price(6.66)
                                                         .description("WE KNOW THE DEVIL is a visual novel about teens reluctantly fighting the devil at summer camp. Follow meangirl Neptune, tomboy Jupiter, and shy shy Venus as they get to know each other--but one always gets left out.")
                                                         .ageRating("T")
                                                         .build(),
 
 
                                         Videogame.builder()
-                                                        .id(9L)
+                                                        .id(13L)
                                                         .title("Heaven will be mine")
                                                         .genre("Indie")
 
                                                         .releaseYear(2018)
                                                         .studio("Worst Girls Games")
 
-                                                        .price(100)
+                                                        .price(14.99)
                                                         .description("HEAVEN WILL BE MINE is a visual novel about making terrible life decisions in the midst of a hot-blooded battle between giant robots. Select one of three terribly behaved girls to fight and/or make out with each other in their struggle for the fate of space.")
                                                         .ageRating("T")
                                                         .build(),
 
                                         Videogame.builder()
-                                                        .id(10L)
+                                                        .id(14L)
                                                         .title("Slay the princess")
                                                         .genre("Psychological Horror")
 
                                                         .releaseYear(2023)
                                                         .studio("Black Tabby Games")
 
-                                                        .price(208)
+                                                        .price(17.99)
                                                         .description("You're here to slay the princess. Don't believe her lies.")
                                                         .ageRating("M")
                                                         .build(),
@@ -180,7 +235,7 @@ public class VideogameRepository {
                                          */
 
                                         Videogame.builder()
-                                                        .id(11L)
+                                                        .id(15L)
                                                         .title("Street Fighter 6")
                                                         .genre("Fighting")
 
@@ -194,7 +249,7 @@ public class VideogameRepository {
                                                         .build(),
 
                                         Videogame.builder()
-                                                        .id(12L)
+                                                        .id(16L)
                                                         .title("Super Smash Bros. Ultimate")
                                                         .genre("Fighting")
 
@@ -215,7 +270,7 @@ public class VideogameRepository {
                                          */
 
                                         Videogame.builder()
-                                                        .id(13L)
+                                                        .id(17L)
                                                         .title("Hades")
                                                         .genre("Rougelike")
 
@@ -229,7 +284,7 @@ public class VideogameRepository {
                                                         .build(),
 
                                         Videogame.builder()
-                                                        .id(14L)
+                                                        .id(18L)
                                                         .title("The Binding of Isaac")
                                                         .genre("Rougelike")
 
