@@ -16,18 +16,18 @@ export default function Example() {
 
     Esto representa el patrón Observer.
     */
-    const [genre, setGenre] = useState("ACTION");
+    const [genre, setGenre] = useState("");
 
 
 
     /*
     ==================================================
-    ESTADO DE PELÍCULAS
+    VIDEOGAMES ARCHIVE
     ==================================================
 
     Guarda la información obtenida desde GraphQL.
     */
-    const [movies, setMovies] = useState([]);
+    const [games, setGames] = useState([]);
 
 
 
@@ -52,40 +52,81 @@ export default function Example() {
     */
     const queries = {
 
-        ACTION: `
+        PUZZLES: `
             query {
-                getPostsByGenre(genre:"ACTION") {
+                getPostsByGenre(genre:"PUZZLES") {
                     id
                     title
-                    weapon
-                    explosions
+                    genre
+                    releaseYear
+                    studio
+                    price
+                    description
+                    ageRating
                 }
             }
         `,
 
-        COMEDY: `
+        RPG: `
             query {
-                getPostsByGenre(genre:"COMEDY") {
+                getPostsByGenre(genre:"RPG") {
                     id
                     title
-                    typeOfComedy
-                    memeCount
+                    genre
+                    releaseYear
+                    studio
+                    price
+                    description
+                    ageRating
                 }
             }
         `,
 
-        HORROR: `
+        VISUAL_NOVELS: `
             query {
-                getPostsByGenre(genre:"HORROR") {
+                getPostsByGenre(genre:"VISUAL_NOVELS") {
                     id
                     title
-                    monster
-                    goreLevel
+                    genre
+                    releaseYear
+                    studio
+                    price
+                    description
+                    ageRating
+                }
+            }
+        `,
+
+        FIGHTER: `
+            query {
+                getPostsByGenre(genre:"FIGHTER") {
+                    id
+                    title
+                    genre
+                    releaseYear
+                    studio
+                    price
+                    description
+                    ageRating
+                }
+            }
+        `,
+
+        ROGUELIKE: `
+            query {
+                getPostsByGenre(genre:"ROGUELIKE") {
+                    id
+                    title
+                    genre
+                    releaseYear
+                    studio
+                    price
+                    description
+                    ageRating
                 }
             }
         `
     };
-
 
 
     /*
@@ -108,7 +149,7 @@ export default function Example() {
     */
     useEffect(() => {
 
-        getMovies();
+        getGames();
 
     }, [genre]);
 
@@ -119,7 +160,7 @@ export default function Example() {
     FETCH GRAPHQL
     ==================================================
     */
-    const getMovies = async () => {
+    const getGames = async () => {
 
         try {
 
@@ -165,7 +206,7 @@ export default function Example() {
 
                 setError(data.errors[0]?.message);
 
-                setMovies([]);
+                setGames([]);
 
                 return;
             }
@@ -180,7 +221,7 @@ export default function Example() {
             React actualizará automáticamente la UI
             cuando movies cambie.
             */
-            setMovies(
+            setGames(
                 data?.data?.getPostsByGenre ?? []
             );
 
@@ -194,26 +235,24 @@ export default function Example() {
 
             setError("Error de conexión");
 
-            setMovies([]);
+            setGames([]);
         }
     };
-
 
 
     return (
 
         <div>
 
-            <h1>Netflix Dynamic GraphQL</h1>
+            <h1>Archive</h1>
 
             <p>
-                Género actual:
+                Genre:
                 <strong>
                     {" "}
                     {genre}
                 </strong>
             </p>
-
 
 
             {/* ======================================
@@ -232,27 +271,34 @@ export default function Example() {
             <div className="genres">
 
                 <button
-                    onClick={() => setGenre("ACTION")}
+                    onClick={() => setGenre("PUZZLES")}
                 >
-                    Acción
+                    Puzzles
                 </button>
-
-
 
                 <button
-                    onClick={() => setGenre("COMEDY")}
+                    onClick={() => setGenre("RPG")}
                 >
-                    Comedia
+                    RPG
                 </button>
-
-
 
                 <button
-                    onClick={() => setGenre("HORROR")}
+                    onClick={() => setGenre("VISUAL NOVEL")}
                 >
-                    Terror
+                    Visual Novels
                 </button>
 
+                <button
+                    onClick={() => setGenre("FIGHTER")}
+                >
+                    Fighting
+                </button>
+
+                <button
+                    onClick={() => setGenre("ROGUELIKE")}
+                >
+                    Roguelike
+                </button>
             </div>
 
 
@@ -281,91 +327,42 @@ export default function Example() {
             <div className="movies-container">
 
                 {
-                    movies.map((movie) => (
+                    games.map((games) => (
 
                         <div
                             className="movie-card"
-                            key={movie.id}
+                            key={games.id}
                         >
 
                             <h3>
-                                {movie.title}
+                                {games.title}
                             </h3>
 
-
-
-                            {/* ACTION */}
-                            {movie.weapon && (
-
-                                <p>
-                                    Weapon:
-                                    {" "}
-                                    {movie.weapon}
-                                </p>
-
-                            )}
-
-
-
-                            {movie.explosions && (
-
-                                <p>
-                                    Explosions:
-                                    {" "}
-                                    {movie.explosions}
-                                </p>
-
-                            )}
-
-
-
-                            {/* COMEDY */}
-                            {movie.typeOfComedy && (
-
-                                <p>
-                                    Comedy:
-                                    {" "}
-                                    {movie.typeOfComedy}
-                                </p>
-
-                            )}
-
-
-
-                            {movie.memeCount && (
-
-                                <p>
-                                    Meme Count:
-                                    {" "}
-                                    {movie.memeCount}
-                                </p>
-
-                            )}
-
-
-
-                            {/* HORROR */}
-                            {movie.monster && (
-
-                                <p>
-                                    Monster:
-                                    {" "}
-                                    {movie.monster}
-                                </p>
-
-                            )}
-
-
-
-                            {movie.goreLevel && (
-
-                                <p>
-                                    Gore Level:
-                                    {" "}
-                                    {movie.goreLevel}
-                                </p>
-
-                            )}
+                            <p>
+                                Release Year:
+                                {" "}
+                                {games.releaseYear}
+                            </p>
+                            <p>
+                                Studio:
+                                {" "}
+                                {games.studio}
+                            </p>
+                            <p>
+                                Price:
+                                {" "}
+                                {games.price}
+                            </p>
+                            <p>
+                                Description:
+                                {" "}
+                                {games.description}
+                            </p>
+                            <p>
+                                Age rating:
+                                {" "}
+                                {games.ageRating}
+                            </p>
 
                         </div>
                     ))
