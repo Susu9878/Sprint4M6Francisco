@@ -20,46 +20,46 @@ import java.util.List;
 public class VideogameController {
 
     /** Repositorio para acceder y manipular datos de publicaciones. */
-    private final VideogameRepository postRepository;
+    private final VideogameRepository videogameRepository;
 
     /** Mapper para convertir PostDto a entidad Post. */
     private final VideogameMapper postMapper;
 
     @QueryMapping
-    public List<Videogame> getPostsByGenre(@Argument String genre) {
+    public List<Videogame> getGamesByGenre(@Argument String genre) {
 
-        return postRepository.getPostsByGenre(genre);
+        return videogameRepository.getGamesByGenre(genre);
     }
 
     /** Obtiene publicaciones recientes con paginación (count, offset). */
     @QueryMapping
     public List<Videogame> getRecentPosts(@Argument int count, @Argument int offset) {
-        return postRepository.getRecentPosts(count, offset);
+        return videogameRepository.getRecentGames(count, offset);
     }
 
     /** Obtiene una publicación por su ID o lanza PostNotFound. */
     @QueryMapping
     public Videogame getPostById(@Argument Long id) {
-        return postRepository.getById(id).orElseThrow(VideogameNotFound::new);
+        return videogameRepository.getById(id).orElseThrow(VideogameNotFound::new);
     }
 
     /** Obtiene todas las publicaciones. */
     @QueryMapping
     public List<Videogame> getAllPosts() {
-        return postRepository.getAll();
+        return videogameRepository.getAll();
     }
 
     /** Elimina una publicación por ID o lanza PostNotFound. */
     @MutationMapping
     public Videogame deletePostById(@Argument Long id) {
 
-        return postRepository.delete(id).orElseThrow(VideogameNotFound::new);
+        return videogameRepository.delete(id).orElseThrow(VideogameNotFound::new);
     }
 
     /** Guarda una nueva publicación a partir de PostDto. */
     @MutationMapping
     public Videogame savePost(@Argument VideogameDTO postDto) {
         Videogame post = postMapper.apply(postDto);
-        return postRepository.save(post);
+        return videogameRepository.save(post);
     }
 }
