@@ -1,5 +1,7 @@
 package com.davinchicoder.springgraphql.entity;
 
+import java.time.LocalDateTime;
+
 import lombok.Builder;
 import lombok.Data;
 
@@ -20,6 +22,8 @@ public class Videogame {
     private double price;
     private String description;
     private String ageRating;
+    private LocalDateTime deletedAt;
+    private LocalDateTime createdAt;
 
     public Long getId() {
         return id;
@@ -83,5 +87,13 @@ public class Videogame {
 
     public void setAgeRating(String ageRating) {
         this.ageRating = ageRating;
+    }
+
+    public void setDeletedAt(LocalDateTime deletedAt) {
+        this.deletedAt = deletedAt;
+    }
+
+    public LocalDateTime getDeletedAt() {
+        return deletedAt;
     }
 }

@@ -3,6 +3,7 @@ package com.davinchicoder.springgraphql.repository;
 import com.davinchicoder.springgraphql.entity.Videogame;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -14,7 +15,7 @@ import java.util.Optional;
 @Repository
 public class VideogameRepository {
 
-        private final List<Videogame> POSTS = new ArrayList<>(
+        private final List<Videogame> GAMES = new ArrayList<>(
 
                         List.of(
 
@@ -86,7 +87,6 @@ public class VideogameRepository {
                                                         .ageRating("T")
                                                         .build(),
 
-
                                         /*
                                          * =================================================
                                          * VISUAL NOVELS
@@ -145,7 +145,6 @@ public class VideogameRepository {
                                                         .ageRating("T")
                                                         .build(),
 
-
                                         Videogame.builder()
                                                         .id(9L)
                                                         .title("Heaven will be mine")
@@ -173,9 +172,9 @@ public class VideogameRepository {
                                                         .build(),
 
                                         /*
-                                                /*
+                                         * /*
                                          * =================================================
-                                         * FIGHTER 
+                                         * FIGHTER
                                          * =================================================
                                          */
 
@@ -207,8 +206,7 @@ public class VideogameRepository {
                                                         .ageRating("E10+")
                                                         .build(),
 
-
-                                                                                                /*
+                                        /*
                                          * =================================================
                                          * ROGUELIKE
                                          * =================================================
@@ -238,33 +236,55 @@ public class VideogameRepository {
 
                                                         .price(7.49)
 
-                                                        .description("When Isaac’s mother starts hearing the voice of God demanding a sacrifice be made to prove her faith, Isaac escapes into the basement facing droves of deranged enemies, lost brothers and sisters, his fears, and eventually his mother.\r\n" + //
-                                                                                                                                "The Binding of Isaac is a randomly generated action RPG shooter with heavy Rogue-like elements. Following Isaac on his journey players will find bizarre treasures that change Isaac’s form giving him super human abilities and enabling him to fight off droves of mysterious creatures, discover secrets and fight his way to safety.")
+                                                        .description("When Isaac’s mother starts hearing the voice of God demanding a sacrifice be made to prove her faith, Isaac escapes into the basement facing droves of deranged enemies, lost brothers and sisters, his fears, and eventually his mother.\r\n"
+                                                                        + //
+                                                                        "The Binding of Isaac is a randomly generated action RPG shooter with heavy Rogue-like elements. Following Isaac on his journey players will find bizarre treasures that change Isaac’s form giving him super human abilities and enabling him to fight off droves of mysterious creatures, discover secrets and fight his way to safety.")
                                                         .ageRating("M")
                                                         .build()));
 
-        public List<Videogame> getPostsByGenre(String genre) {
+        public List<Videogame> getGamesByGenre(String genre) {
 
-                return POSTS.stream()
-                                .filter(post -> post.getGenre()
+                return GAMES.stream()
+                                .filter(game -> game.getGenre()
                                                 .equalsIgnoreCase(genre))
                                 .toList();
         }
 
-
-
+        public List<Videogame> getRecentGames(int count, int offset) {
+                return GAMES.stream().filter(game -> game.getDeletedAt() == null)
+                                .toList()
+                                .subList(offset, Math.min(offset + count, GAMES.size()));
+        }
 
         public Optional<Videogame> getById(Long id) {
-                return POSTS.stream().filter(post -> post.getId().equals(id)).findFirst();
+                return GAMES.stream().filter(game -> game.getId().equals(id)).findFirst();
         }
 
         public List<Videogame> getAll() {
-                return POSTS.stream().toList();
+                return GAMES.stream().toList();
+        }
+
+        public Optional<Videogame> delete(Long id) {
+                Optional<Videogame> gameToDelete = GAMES.stream()
+                                .filter(game -> game.getId().equals(id))
+                                .findFirst();
+
+                gameToDelete.ifPresent(game -> game.setDeletedAt(LocalDateTime.now()));
+
+                return gameToDelete;
+        }
+
+        public Videogame save(Videogame game) {
+                game.setId(this.getNextId());
+                game.setCreatedAt(LocalDateTime.now());
+
+                GAMES.add(game);
+                return game;
         }
 
         private Long getNextId() {
                 System.out.println("test");
-                return POSTS.stream().mapToLong(Videogame::getId).max().orElse(0L) + 1L;
+                return GAMES.stream().mapToLong(Videogame::getId).max().orElse(0L) + 1L;
         }
 
 }
