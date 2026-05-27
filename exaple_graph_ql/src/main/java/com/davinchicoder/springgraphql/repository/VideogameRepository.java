@@ -101,7 +101,7 @@ public class VideogameRepository {
                                                         .title("Z.A.T.O: I love the world and everything in it")
                                                         .genre("Mystery")
 
-                                                        .releaseYear("2025")
+                                                        .releaseYear(2025)
                                                         .studio("Ferry // Nopanamaman")
 
                                                         .price(0)
