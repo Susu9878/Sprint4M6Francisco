@@ -22,13 +22,15 @@ public class Videogame {
     private double price;
     private String description;
     private String ageRating;
+
+    private String status;
+
     private LocalDateTime deletedAt;
     private LocalDateTime createdAt;
 
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
@@ -36,7 +38,6 @@ public class Videogame {
     public String getTitle() {
         return title;
     }
-
     public void setTitle(String title) {
         this.title = title;
     }
@@ -44,7 +45,6 @@ public class Videogame {
     public String getGenre() {
         return genre;
     }
-
     public void setGenre(String genre) {
         this.genre = genre;
     }
@@ -52,7 +52,6 @@ public class Videogame {
     public int getReleaseYear() {
         return releaseYear;
     }
-
     public void setReleaseYear(int releaseYear) {
         this.releaseYear = releaseYear;
     }
@@ -60,15 +59,11 @@ public class Videogame {
     public String getStudio() {
         return studio;
     }
-
     public void setStudio(String studio) {
         this.studio = studio;
     }
 
-    public double getPrice() {
-        return price;
-    }
-
+    public double getPrice() { return price; }
     public void setPrice(double price) {
         this.price = price;
     }
@@ -76,7 +71,6 @@ public class Videogame {
     public String getDescription() {
         return description;
     }
-
     public void setDescription(String description) {
         this.description = description;
     }
@@ -84,15 +78,16 @@ public class Videogame {
     public String getAgeRating() {
         return ageRating;
     }
-
     public void setAgeRating(String ageRating) {
         this.ageRating = ageRating;
     }
 
+    public String getStatus() { return status; }
+    public void setStatus(String ageRating) { this.status = ageRating; }
+
     public void setDeletedAt(LocalDateTime deletedAt) {
         this.deletedAt = deletedAt;
     }
-
     public LocalDateTime getDeletedAt() {
         return deletedAt;
     }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react'
 
 function Home() {
@@ -9,4 +10,14 @@ function Home() {
     )
 }
 
+=======
+import React from 'react'
+
+function Home() {
+    return (
+        <h1> "Bienvenido :D" </h1>
+    )
+}
+
+>>>>>>> aadbb808be321db5bb4658fed5ac6cfd408e8b57
 export default Home

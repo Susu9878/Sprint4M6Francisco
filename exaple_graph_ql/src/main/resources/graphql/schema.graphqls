@@ -7,6 +7,7 @@ type Videogame {
     price: Float
     description: String
     ageRating: String
+    status: String
 }
 
 input VideogameDto {
@@ -17,6 +18,7 @@ input VideogameDto {
     price: Float
     description: String
     ageRating: String
+    status: String
 }
 
 type Query {
