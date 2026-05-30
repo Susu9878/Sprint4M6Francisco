@@ -2,6 +2,10 @@ import { useEffect, useState } from "react";
 import VideogameCardFactory from "../components/card/VideogameCardFactory";
 import "../styles/example.css";
 
+import QuerySubject from "../observers/QuerySubject";
+import GamesObserver from "../observers/GamesObserver";
+import StatsObserver from "../observers/StatsObserver";
+
 export default function Example() {
   /*
     ==================================================
@@ -17,7 +21,7 @@ export default function Example() {
 
     Esto representa el patrón Observer.
     */
-  const [genre, setGenre] = useState("");
+  const [genre, setGenre] = useState("RPG");
 
   /*
     ==================================================
@@ -48,7 +52,7 @@ export default function Example() {
   const queries = {
     PUZZLES: `
             query {
-                getGamesByGenre(genre:"PUZZLES") {
+                getVideogamesByGenre(genre:"PUZZLES") {
                     id
                     title
                     genre
@@ -64,7 +68,7 @@ export default function Example() {
 
     RPG: `
             query {
-                getGamesByGenre(genre:"RPG") {
+                getVideogamesByGenre(genre:"RPG") {
                     id
                     title
                     genre
@@ -80,7 +84,7 @@ export default function Example() {
 
     VISUAL_NOVELS: `
             query {
-                getGamesByGenre(genre:"VISUAL_NOVELS") {
+                getVideogamesByGenre(genre:"VISUAL_NOVELS") {
                     id
                     title
                     genre
@@ -96,7 +100,7 @@ export default function Example() {
 
     FIGHTER: `
             query {
-                getGamesByGenre(genre:"FIGHTER") {
+                getVideogamesByGenre(genre:"FIGHTER") {
                     id
                     title
                     genre
@@ -112,7 +116,7 @@ export default function Example() {
 
     ROGUELIKE: `
             query {
-                getGamesByGenre(genre:"ROGUELIKE") {
+                getVideogamesByGenre(genre:"ROGUELIKE") {
                     id
                     title
                     genre
@@ -154,6 +158,10 @@ export default function Example() {
       QuerySubject.unsubscribe(StatsObserver);
     };
   }, []);
+
+  useEffect(() => {
+    getGames();
+  }, [genre]);
 
   /*
     ==================================================
@@ -207,7 +215,7 @@ export default function Example() {
             React actualizará automáticamente la UI
             cuando movies cambie.
             */
-      setGames(data?.data?.getGamesByGenre ?? []);
+      setGames(data?.data?.getVideogamesByGenre ?? []);
 
       setError(null);
     } catch (err) {
