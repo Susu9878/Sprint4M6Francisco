@@ -1,10 +1,9 @@
-<<<<<<< HEAD
 import { useEffect, useState } from "react";
-import "../styles/example.css"
+import VideogameCardFactory from "../components/card/VideogameCardFactory";
+import "../styles/example.css";
 
 export default function Example() {
-
-    /*
+  /*
     ==================================================
     SUBJECT (ESTADO OBSERVADO)
     ==================================================
@@ -18,31 +17,25 @@ export default function Example() {
 
     Esto representa el patrón Observer.
     */
-    const [genre, setGenre] = useState("");
+  const [genre, setGenre] = useState("");
 
-
-
-    /*
+  /*
     ==================================================
     VIDEOGAMES ARCHIVE
     ==================================================
 
     Guarda la información obtenida desde GraphQL.
     */
-    const [games, setGames] = useState([]);
+  const [games, setGames] = useState([]);
 
-
-
-    /*
+  /*
     ==================================================
     ESTADO DE ERRORES
     ==================================================
     */
-    const [error, setError] = useState(null);
+  const [error, setError] = useState(null);
 
-
-
-    /*
+  /*
     ==================================================
     QUERIES DINÁMICOS
     ==================================================
@@ -52,11 +45,10 @@ export default function Example() {
     Esto simula cómo Netflix solicita
     diferentes datos dependiendo de la vista.
     */
-    const queries = {
-
-        PUZZLES: `
+  const queries = {
+    PUZZLES: `
             query {
-                getPostsByGenre(genre:"PUZZLES") {
+                getGamesByGenre(genre:"PUZZLES") {
                     id
                     title
                     genre
@@ -65,13 +57,14 @@ export default function Example() {
                     price
                     description
                     ageRating
+                    status
                 }
             }
         `,
 
-        RPG: `
+    RPG: `
             query {
-                getPostsByGenre(genre:"RPG") {
+                getGamesByGenre(genre:"RPG") {
                     id
                     title
                     genre
@@ -80,13 +73,14 @@ export default function Example() {
                     price
                     description
                     ageRating
+                    status
                 }
             }
         `,
 
-        VISUAL_NOVELS: `
+    VISUAL_NOVELS: `
             query {
-                getPostsByGenre(genre:"VISUAL_NOVELS") {
+                getGamesByGenre(genre:"VISUAL_NOVELS") {
                     id
                     title
                     genre
@@ -95,13 +89,14 @@ export default function Example() {
                     price
                     description
                     ageRating
+                    status
                 }
             }
         `,
 
-        FIGHTER: `
+    FIGHTER: `
             query {
-                getPostsByGenre(genre:"FIGHTER") {
+                getGamesByGenre(genre:"FIGHTER") {
                     id
                     title
                     genre
@@ -110,13 +105,14 @@ export default function Example() {
                     price
                     description
                     ageRating
+                    status
                 }
             }
         `,
 
-        ROGUELIKE: `
+    ROGUELIKE: `
             query {
-                getPostsByGenre(genre:"ROGUELIKE") {
+                getGamesByGenre(genre:"ROGUELIKE") {
                     id
                     title
                     genre
@@ -125,13 +121,13 @@ export default function Example() {
                     price
                     description
                     ageRating
+                    status
                 }
             }
-        `
-    };
+        `,
+  };
 
-
-    /*
+  /*
     ==================================================
     OBSERVER
     ==================================================
@@ -149,24 +145,24 @@ export default function Example() {
 
     Esto es comportamiento Observer.
     */
-    useEffect(() => {
+  useEffect(() => {
+    QuerySubject.subscribe(GamesObserver);
+    QuerySubject.subscribe(StatsObserver);
 
-        getGames();
+    return () => {
+      QuerySubject.unsubscribe(GamesObserver);
+      QuerySubject.unsubscribe(StatsObserver);
+    };
+  }, []);
 
-    }, [genre]);
-
-
-
-    /*
+  /*
     ==================================================
     FETCH GRAPHQL
     ==================================================
     */
-    const getGames = async () => {
-
-        try {
-
-            /*
+  const getGames = async () => {
+    try {
+      /*
             ==========================================
             QUERY DINÁMICO
             ==========================================
@@ -174,48 +170,36 @@ export default function Example() {
             Dependiendo del género seleccionado,
             se obtiene un query diferente.
             */
-            const query = queries[genre];
+      const query = queries[genre];
 
+      const res = await fetch("http://localhost:8080/graphql", {
+        method: "POST",
 
+        headers: {
+          "Content-Type": "application/json",
+        },
 
-            const res = await fetch(
-                "http://localhost:8080/graphql",
-                {
-                    method: "POST",
+        body: JSON.stringify({ query }),
+      });
 
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
+      const data = await res.json();
 
-                    body: JSON.stringify({ query })
-                }
-            );
+      console.log(data);
 
-
-
-            const data = await res.json();
-
-            console.log(data);
-
-
-
-            /*
+      /*
             ==========================================
             MANEJO DE ERRORES
             ==========================================
             */
-            if (data.errors) {
+      if (data.errors) {
+        setError(data.errors[0]?.message);
 
-                setError(data.errors[0]?.message);
+        setGames([]);
 
-                setGames([]);
+        return;
+      }
 
-                return;
-            }
-
-
-
-            /*
+      /*
             ==========================================
             ACTUALIZACIÓN REACTIVA
             ==========================================
@@ -223,41 +207,34 @@ export default function Example() {
             React actualizará automáticamente la UI
             cuando movies cambie.
             */
-            setGames(
-                data?.data?.getPostsByGenre ?? []
-            );
+      setGames(data?.data?.getGamesByGenre ?? []);
 
+      setError(null);
+    } catch (err) {
+      console.log(err);
 
+      setError("Error de conexión");
 
-            setError(null);
+      setGames([]);
+    }
+  };
 
-        } catch (err) {
+  const changeGenre = (newGenre) => {
+    setGenre(newGenre);
 
-            console.log(err);
+    QuerySubject.notify(newGenre);
+  };
 
-            setError("Error de conexión");
+  return (
+    <div>
+      <h1>Archive</h1>
 
-            setGames([]);
-        }
-    };
+      <p>
+        Genre:
+        <strong> {genre}</strong>
+      </p>
 
-
-    return (
-
-        <div>
-
-            <h1>Archive</h1>
-
-            <p>
-                Genre:
-                <strong>
-                    {" "}
-                    {genre}
-                </strong>
-            </p>
-
-
-            {/* ======================================
+      {/* ======================================
                 BOTONES
             ======================================
 
@@ -270,492 +247,53 @@ export default function Example() {
 
             Flujo completo Observer.
             ====================================== */}
-            <div className="genres">
+      <div className="genres">
+        <button onClick={() => changeGenre("PUZZLES")} className="puzzleButton">
+          Puzzles
+        </button>
 
-                <button
-                    onClick={() => setGenre("PUZZLES")}
-                    className="puzzleButton"
-                >
-                    Puzzles
-                </button>
+        <button onClick={() => changeGenre("RPG")} className="rpgButton">
+          RPG
+        </button>
 
-                <button
-                    onClick={() => setGenre("RPG")}
-                    className="rpgButton"
-                >
-                    RPG
-                </button>
+        <button
+          onClick={() => changeGenre("VISUAL_NOVELS")}
+          className="vnButton"
+        >
+          Visual Novels
+        </button>
 
-                <button
-                    onClick={() => setGenre("VISUAL NOVEL")}
-                    className="vnButton"
-                >
-                    Visual Novels
-                </button>
+        <button
+          onClick={() => changeGenre("FIGHTER")}
+          className="fighterButton"
+        >
+          Fighter
+        </button>
 
-                <button
-                    onClick={() => setGenre("FIGHTER")}
-                    className="fighterButton"
-                >
-                    Fighter
-                </button>
+        <button
+          onClick={() => changeGenre("ROGUELIKE")}
+          className="roguelikeButton"
+        >
+          Roguelike
+        </button>
+      </div>
 
-                <button
-                    onClick={() => setGenre("ROGUELIKE")}
-                    className="roguelikeButton"
-                >
-                    Roguelike
-                </button>
-            </div>
+      <br />
 
+      {error && <p style={{ color: "red" }}>{error}</p>}
 
-
-            <br />
-
-
-
-            {error && (
-
-                <p style={{ color: "red" }}>
-                    {error}
-                </p>
-
-            )}
-
-
-
-            {/* ======================================
+      {/* ======================================
                 RENDERIZADO REACTIVO
             ======================================
 
             Cuando movies cambia:
             React vuelve a renderizar automáticamente.
             */}
-            <div className="movies-container">
-
-                {
-                    games.map((games) => (
-
-                        <div
-                            className="movie-card"
-                            key={games.id}
-                        >
-
-                            <h3>
-                                {games.title}
-                            </h3>
-
-                            <p>
-                                Release Year:
-                                {" "}
-                                {games.releaseYear}
-                            </p>
-                            <p>
-                                Studio:
-                                {" "}
-                                {games.studio}
-                            </p>
-                            <p>
-                                Price:
-                                {" "}
-                                {games.price}
-                            </p>
-                            <p>
-                                Description:
-                                {" "}
-                                {games.description}
-                            </p>
-                            <p>
-                                Age rating:
-                                {" "}
-                                {games.ageRating}
-                            </p>
-
-                        </div>
-                    ))
-                }
-
-            </div>
-
-        </div>
-    );
-=======
-import { useEffect, useState } from "react";
-
-export default function Example() {
-
-    /*
-    ==================================================
-    SUBJECT (ESTADO OBSERVADO)
-    ==================================================
-
-    React observará cambios en "genre".
-
-    Cuando "genre" cambie:
-    - React notificará componentes
-    - useEffect reaccionará automáticamente
-    - GraphQL cambiará el query
-
-    Esto representa el patrón Observer.
-    */
-    const [genre, setGenre] = useState("ACTION");
-
-
-
-    /*
-    ==================================================
-    ESTADO DE PELÍCULAS
-    ==================================================
-
-    Guarda la información obtenida desde GraphQL.
-    */
-    const [movies, setMovies] = useState([]);
-
-
-
-    /*
-    ==================================================
-    ESTADO DE ERRORES
-    ==================================================
-    */
-    const [error, setError] = useState(null);
-
-
-
-    /*
-    ==================================================
-    QUERIES DINÁMICOS
-    ==================================================
-
-    Cada género solicita información distinta.
-
-    Esto simula cómo Netflix solicita
-    diferentes datos dependiendo de la vista.
-    */
-    const queries = {
-
-        ACTION: `
-            query {
-                getPostsByGenre(genre:"ACTION") {
-                    id
-                    title
-                    weapon
-                    explosions
-                }
-            }
-        `,
-
-        COMEDY: `
-            query {
-                getPostsByGenre(genre:"COMEDY") {
-                    id
-                    title
-                    typeOfComedy
-                    memeCount
-                }
-            }
-        `,
-
-        HORROR: `
-            query {
-                getPostsByGenre(genre:"HORROR") {
-                    id
-                    title
-                    monster
-                    goreLevel
-                }
-            }
-        `
-    };
-
-
-
-    /*
-    ==================================================
-    OBSERVER
-    ==================================================
-
-    useEffect está OBSERVANDO "genre".
-
-    El arreglo [genre] funciona como:
-    - lista de dependencias
-    - suscripción
-    - observer
-
-    Cuando genre cambia:
-    - React detecta el cambio
-    - ejecuta automáticamente getMovies()
-
-    Esto es comportamiento Observer.
-    */
-    useEffect(() => {
-
-        getMovies();
-
-    }, [genre]);
-
-
-
-    /*
-    ==================================================
-    FETCH GRAPHQL
-    ==================================================
-    */
-    const getMovies = async () => {
-
-        try {
-
-            /*
-            ==========================================
-            QUERY DINÁMICO
-            ==========================================
-
-            Dependiendo del género seleccionado,
-            se obtiene un query diferente.
-            */
-            const query = queries[genre];
-
-
-
-            const res = await fetch(
-                "http://localhost:8080/graphql",
-                {
-                    method: "POST",
-
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-
-                    body: JSON.stringify({ query })
-                }
-            );
-
-
-
-            const data = await res.json();
-
-            console.log(data);
-
-
-
-            /*
-            ==========================================
-            MANEJO DE ERRORES
-            ==========================================
-            */
-            if (data.errors) {
-
-                setError(data.errors[0]?.message);
-
-                setMovies([]);
-
-                return;
-            }
-
-
-
-            /*
-            ==========================================
-            ACTUALIZACIÓN REACTIVA
-            ==========================================
-
-            React actualizará automáticamente la UI
-            cuando movies cambie.
-            */
-            setMovies(
-                data?.data?.getPostsByGenre ?? []
-            );
-
-
-
-            setError(null);
-
-        } catch (err) {
-
-            console.log(err);
-
-            setError("Error de conexión");
-
-            setMovies([]);
-        }
-    };
-
-
-
-    return (
-
-        <div>
-
-            <h1>Netflix Dynamic GraphQL</h1>
-
-            <p>
-                Género actual:
-                <strong>
-                    {" "}
-                    {genre}
-                </strong>
-            </p>
-
-
-
-            {/* ======================================
-                BOTONES
-            ======================================
-
-            Cuando se hace click:
-            - cambia genre
-            - React detecta cambio
-            - useEffect reacciona
-            - GraphQL cambia query
-            - UI cambia automáticamente
-
-            Flujo completo Observer.
-            ====================================== */}
-            <div className="genres">
-
-                <button
-                    onClick={() => setGenre("ACTION")}
-                >
-                    Acción
-                </button>
-
-
-
-                <button
-                    onClick={() => setGenre("COMEDY")}
-                >
-                    Comedia
-                </button>
-
-
-
-                <button
-                    onClick={() => setGenre("HORROR")}
-                >
-                    Terror
-                </button>
-
-            </div>
-
-
-
-            <br />
-
-
-
-            {error && (
-
-                <p style={{ color: "red" }}>
-                    {error}
-                </p>
-
-            )}
-
-
-
-            {/* ======================================
-                RENDERIZADO REACTIVO
-            ======================================
-
-            Cuando movies cambia:
-            React vuelve a renderizar automáticamente.
-            */}
-            <div className="movies-container">
-
-                {
-                    movies.map((movie) => (
-
-                        <div
-                            className="movie-card"
-                            key={movie.id}
-                        >
-
-                            <h3>
-                                {movie.title}
-                            </h3>
-
-
-
-                            {/* ACTION */}
-                            {movie.weapon && (
-
-                                <p>
-                                    Weapon:
-                                    {" "}
-                                    {movie.weapon}
-                                </p>
-
-                            )}
-
-
-
-                            {movie.explosions && (
-
-                                <p>
-                                    Explosions:
-                                    {" "}
-                                    {movie.explosions}
-                                </p>
-
-                            )}
-
-
-
-                            {/* COMEDY */}
-                            {movie.typeOfComedy && (
-
-                                <p>
-                                    Comedy:
-                                    {" "}
-                                    {movie.typeOfComedy}
-                                </p>
-
-                            )}
-
-
-
-                            {movie.memeCount && (
-
-                                <p>
-                                    Meme Count:
-                                    {" "}
-                                    {movie.memeCount}
-                                </p>
-
-                            )}
-
-
-
-                            {/* HORROR */}
-                            {movie.monster && (
-
-                                <p>
-                                    Monster:
-                                    {" "}
-                                    {movie.monster}
-                                </p>
-
-                            )}
-
-
-
-                            {movie.goreLevel && (
-
-                                <p>
-                                    Gore Level:
-                                    {" "}
-                                    {movie.goreLevel}
-                                </p>
-
-                            )}
-
-                        </div>
-                    ))
-                }
-
-            </div>
-
-        </div>
-    );
->>>>>>> aadbb808be321db5bb4658fed5ac6cfd408e8b57
+      <div className="games-container">
+        {games.map((game) => (
+          <VideogameCardFactory key={game.id} game={game} />
+        ))}
+      </div>
+    </div>
+  );
 }
