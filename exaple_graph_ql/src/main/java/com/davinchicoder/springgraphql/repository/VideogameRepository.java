@@ -8,10 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.stereotype.Repository;
-
-import com.davinchicoder.springgraphql.entity.Videogame;
-
 /**
  * Repositorio en memoria que simula operaciones CRUD sobre Post sin usar base
  * de datos.
@@ -41,6 +37,7 @@ public class VideogameRepository {
 
                                                         .description("Enigma of Fear is a game of investigation and mystery in Pixel Art/3D where your deduction is your guide. Play and enjoy this story in the way that you want to: analyze thoroughly every detail in an engaging narrative, ask partner agents for help, face enemies or try to go through them stealthily.")
                                                         .ageRating("T")
+                                                        .status("RELEASED")
                                                         .build(),
 
                                         Videogame.builder()
@@ -55,6 +52,7 @@ public class VideogameRepository {
 
                                                         .description("The game centers on Professor Hershel Layton, and his self-styled apprentice, Luke Triton, investigating the fictional village of St. Mystere about an artifact known as the Golden Apple, an heirloom that the late Baron had left as a test to determine who would receive his fortune after his death. The residents of St. Mystere particularly enjoy brain teasers and will often ask the player to help solve them by using the system's touchscreen to submit answers in exchange for their cooperation in the search. ")
                                                         .ageRating("E")
+                                                        .status("RELEASED")
                                                         .build(),
 
                                         /*
@@ -89,64 +87,9 @@ public class VideogameRepository {
 
                                                         .description("Fight (or spare) alongside new characters in UNDERTALE's parallel story, DELTARUNE...!")
                                                         .ageRating("T")
-                                                        .build(),
-                                        Videogame.builder()
-                                                        .id(5L)
-                                                        .title("Undertale")
-                                                        .genre("RPG")
-
-                                                        .releaseYear(2025)
-                                                        .studio("tobyfox")
-
-                                                        .price(9.99)
-
-                                                        .description("UNDERTALE! The RPG game where you don't have to destroy anyone.")
-                                                        .ageRating("T")
+                                                        .status("RELEASED")
                                                         .build(),
 
-                                        Videogame.builder()
-                                                        .id(6L)
-                                                        .title("In Stars and Time")
-                                                        .genre("RPG")
-
-                                                        .releaseYear(2023)
-                                                        .studio("insertdisc5")
-
-                                                        .price(19.99)
-
-                                                        .description("Live with the ever-present burden of being trapped in a time loop only you can know about in this turn-based RPG. Create a better future for you and your friends. Find hope where there is none left. Pray to the stars and free yourself from time")
-                                                        .ageRating("T")
-                                                        .build(),
-
-                                        Videogame.builder()
-                                                        .id(7L)
-                                                        .title("OFF")
-                                                        .genre("RPG")
-
-                                                        .releaseYear(2008)
-                                                        .studio("Unproductive Fun Time")
-
-                                                        .price(14.99)
-
-                                                        .description("“I'm the Batter. I've been entrusted with a sacred mission.” -- One of the most influential RPGs of the last 20 years is finally coming to Steam. Take control of the Batter as he seeks to purify an uncanny and hopeless world haunted by specters, guided by a cryptic, grinning cat called The Judge.")
-                                                        .ageRating("T")
-                                                        .build(),       
-
-                                        Videogame.builder()
-                                                        .id(8L)
-                                                        .title("Yume Nikki")
-                                                        .genre("RPG")
-
-                                                        .releaseYear(2004)
-                                                        .studio("Kikiyama")
-
-                                                        .price(0)
-
-                                                        .description("This is a game in which you traverse the extremely dark world inside a dream.")
-                                                        .ageRating("T")
-                                                        .build(),                                                            
-                        
-                                                        
                                         /*
                                          * =================================================
                                          * VISUAL NOVELS
@@ -154,7 +97,7 @@ public class VideogameRepository {
                                          */
 
                                         Videogame.builder()
-                                                        .id(9L)
+                                                        .id(5L)
                                                         .title("Z.A.T.O: I love the world and everything in it")
                                                         .genre("Mystery")
 
@@ -164,23 +107,25 @@ public class VideogameRepository {
                                                         .price(0)
                                                         .description("USSR, 1986. A girl goes missing in the closed city of Vorkuta-5, yet not a soul seems to be concerned. Uncover the mystery behind her disappearance and transmit your signal to the universe.")
                                                         .ageRating("T")
+                                                        .status("RELEASED")
                                                         .build(),
 
                                         Videogame.builder()
-                                                        .id(10L)
+                                                        .id(6L)
                                                         .title("Umineko When They Cry")
                                                         .genre("Murder Mystery")
 
                                                         .releaseYear(2007)
                                                         .studio("07th Expansion")
 
-                                                        .price(32.98)
+                                                        .price(270)
                                                         .description("Welcome to the world of \"Umineko When They Cry\" (When Seagulls Cry) Welcome to the Rokkenjima of October 4, 1986. You have been given a chance to catch a glimpse of the family conference held annually by the Ushiromiya family. The remaining life in the old family head who has built up a vast fortune is very slim. To his children, the greatest point of contention at this family conference is the distribution of his inheritance.Everyone desires all that money, no one relents, and no one believes. Who will gain the old head's vast inheritance? Where is the 10 tons of gold that the old head is said to have hidden? Can the unnerving riddle of the epitaph which is said to point to the location of that gold be solved? In the midst of this, a suspicious letter is sent from one claiming to be a witch. The presence of a 19th person on this island, which should only have 18, begins to hang in the air. Brutal murders repeat, and unsolvable riddles are left at the scene. How many will die? How many will live? Or will everyone die? Is the culprit one of the 18, or not? Is the culprit a \"human\", or a \"witch\"? Please, enjoy this isolated island, western mansion,mystery-suspense gadget of the good old days to the fullest.")
                                                         .ageRating("M")
+                                                        .status("RELEASED")
                                                         .build(),
 
                                         Videogame.builder()
-                                                        .id(11L)
+                                                        .id(7L)
                                                         .title("Butterfly Soup")
                                                         .genre("Slice of life")
 
@@ -193,42 +138,45 @@ public class VideogameRepository {
                                                         .build(),
 
                                         Videogame.builder()
-                                                        .id(12L)
+                                                        .id(8L)
                                                         .title("We know the devil")
                                                         .genre("Drama")
 
                                                         .releaseYear(2016)
                                                         .studio("Worst Girls Games")
 
-                                                        .price(6.66)
+                                                        .price(100)
                                                         .description("WE KNOW THE DEVIL is a visual novel about teens reluctantly fighting the devil at summer camp. Follow meangirl Neptune, tomboy Jupiter, and shy shy Venus as they get to know each other--but one always gets left out.")
                                                         .ageRating("T")
+                                                        .status("RELEASED")
                                                         .build(),
 
                                         Videogame.builder()
-                                                        .id(13L)
+                                                        .id(9L)
                                                         .title("Heaven will be mine")
                                                         .genre("Indie")
 
                                                         .releaseYear(2018)
                                                         .studio("Worst Girls Games")
 
-                                                        .price(14.99)
+                                                        .price(100)
                                                         .description("HEAVEN WILL BE MINE is a visual novel about making terrible life decisions in the midst of a hot-blooded battle between giant robots. Select one of three terribly behaved girls to fight and/or make out with each other in their struggle for the fate of space.")
                                                         .ageRating("T")
+                                                        .status("RELEASED")
                                                         .build(),
 
                                         Videogame.builder()
-                                                        .id(14L)
+                                                        .id(10L)
                                                         .title("Slay the princess")
                                                         .genre("Psychological Horror")
 
                                                         .releaseYear(2023)
                                                         .studio("Black Tabby Games")
 
-                                                        .price(17.99)
+                                                        .price(208)
                                                         .description("You're here to slay the princess. Don't believe her lies.")
                                                         .ageRating("M")
+                                                        .status("RELEASED")
                                                         .build(),
 
                                         /*
@@ -239,7 +187,7 @@ public class VideogameRepository {
                                          */
 
                                         Videogame.builder()
-                                                        .id(15L)
+                                                        .id(11L)
                                                         .title("Street Fighter 6")
                                                         .genre("Fighting")
 
@@ -250,10 +198,11 @@ public class VideogameRepository {
 
                                                         .description("Here comes Capcom’s newest challenger! Street Fighter™ 6 launches worldwide on June 2nd, 2023 and represents the next evolution of the series. ")
                                                         .ageRating("T")
+                                                        .status("RELEASED")
                                                         .build(),
 
                                         Videogame.builder()
-                                                        .id(16L)
+                                                        .id(12L)
                                                         .title("Super Smash Bros. Ultimate")
                                                         .genre("Fighting")
 
@@ -264,6 +213,7 @@ public class VideogameRepository {
 
                                                         .description("Gaming icons clash in the ultimate brawl you can play anytime, anywhere! Smash rivals off the stage as new characters Simon Belmont and King K. Rool join Inkling, Ridley, and every fighter in Super Smash Bros. history. Enjoy enhanced speed and combat at new stages based on the Castlevania series, Super Mario Odyssey, and more!")
                                                         .ageRating("E10+")
+                                                        .status("RELEASED")
                                                         .build(),
 
                                         /*
@@ -273,7 +223,7 @@ public class VideogameRepository {
                                          */
 
                                         Videogame.builder()
-                                                        .id(17L)
+                                                        .id(13L)
                                                         .title("Hades")
                                                         .genre("Rougelike")
 
@@ -284,10 +234,11 @@ public class VideogameRepository {
 
                                                         .description("Hades is a god-like rogue-like dungeon crawler that combines the best aspects of Supergiant's critically acclaimed titles, including the fast-paced action of Bastion, the rich atmosphere and depth of Transistor, and the character-driven storytelling of Pyre.")
                                                         .ageRating("T")
+                                                        .status("RELEASED")
                                                         .build(),
 
                                         Videogame.builder()
-                                                        .id(18L)
+                                                        .id(14L)
                                                         .title("The Binding of Isaac")
                                                         .genre("Rougelike")
 
@@ -300,13 +251,115 @@ public class VideogameRepository {
                                                                         + //
                                                                         "The Binding of Isaac is a randomly generated action RPG shooter with heavy Rogue-like elements. Following Isaac on his journey players will find bizarre treasures that change Isaac’s form giving him super human abilities and enabling him to fight off droves of mysterious creatures, discover secrets and fight his way to safety.")
                                                         .ageRating("M")
+                                                        .status("RELEASED")
+                                                        .build(),
+
+                                        /*
+                                         * =================================================
+                                         * ANNOUNCED
+                                         * =================================================
+                                         */
+                                        Videogame.builder()
+                                                        .id(15L)
+                                                        .title("GTA VI")
+                                                        .genre("Action")
+
+                                                        .releaseYear(2026)
+                                                        .studio("Rockstar Games")
+
+                                                        .description("Vice City, USA. Jason and Lucia have always " +
+                                                                        "known the deck is stacked against them." +
+                                                                        " But when an easy score goes wrong, they " +
+                                                                        "find themselves on the darkest side of the " +
+                                                                        "sunniest place in America, in the middle " +
+                                                                        "of a criminal conspiracy stretching across" +
+                                                                        " the state of Leonida — forced to rely on " +
+                                                                        "each other more than ever if they want to " +
+                                                                        "make it out alive.")
+                                                        .status("ANNOUNCED")
+                                                        .build(),
+
+                                        Videogame.builder()
+                                                        .id(16L)
+                                                        .title("Marvel's Wolverine")
+                                                        .genre("Fighting")
+
+                                                        .releaseYear(2026)
+                                                        .studio("Insomniac")
+
+                                                        .description("From Insomniac Games, the developers of the " +
+                                                                        "acclaimed Marvel's Spider-Man franchise, " +
+                                                                        "comes Marvel's Wolverine. " +
+                                                                        "As he searches for answers about his " +
+                                                                        "past, Wolverine will do whatever it " +
+                                                                        "takes—including unleashing his claws in " +
+                                                                        "savage combat, awakening his violent " +
+                                                                        "rage, and using his relentless " +
+                                                                        "determination—to uncover the mystery " +
+                                                                        "about his identity.")
+                                                        .status("ANNOUNCED")
+                                                        .build(),
+
+                                        Videogame.builder()
+                                                        .id(17L)
+                                                        .title("Fable")
+                                                        .genre("RPG")
+
+                                                        .releaseYear(2026)
+                                                        .studio("X-box game studios")
+
+                                                        .description("Become the Hero you want to be in an immersive " +
+                                                                        "open world where each choice shapes your " +
+                                                                        "journey, reputation is everything, and " +
+                                                                        "fairytale endings are never guaranteed.")
+                                                        .status("ANNOUNCED")
+                                                        .build(),
+
+                                        /*
+                                         * =================================================
+                                         * RUMORED — no release date confirmed
+                                         * fields: title, studio, description only
+                                         * =================================================
+                                         */
+                                        Videogame.builder()
+                                                        .id(18L)
+                                                        .title("Persona 4 Remake")
+                                                        .studio("Atlus")
+
+                                                        .description(" Remake of Persona 4 after trademark was used by "
+                                                                        +
+                                                                        "ATLUS")
+                                                        .status("RUMORED")
+                                                        .build(),
+                                        Videogame.builder()
+                                                        .id(19L)
+                                                        .title("Persona 6 ")
+                                                        .studio("Atlus")
+
+                                                        .description(" Next installment of ATLUS'S successfull franchise")
+                                                        .status("RUMORED")
+                                                        .build(),
+                                        Videogame.builder()
+                                                        .id(19L)
+                                                        .title("Spider-man 3 ")
+                                                        .studio("Insomniac")
+
+                                                        .description(" Marvel's Spider-Man 3 from Insomniac Games is" +
+                                                                        " expected to focus on the final chapter " +
+                                                                        "of Peter Parker's story and a two-front " +
+                                                                        "war against Norman Osborn as the Green " +
+                                                                        "Goblin and Doctor Octopus, while Miles " +
+                                                                        "Morales takes on the mantle of New York's " +
+                                                                        "primary Spider-Man. ")
+                                                        .status("RUMORED")
                                                         .build()));
 
         public List<Videogame> getGamesByGenre(String genre) {
 
                 return GAMES.stream()
-                                .filter(game -> game.getGenre()
-                                                .equalsIgnoreCase(genre))
+                                .filter(game -> game.getGenre() != null &&
+                                                game.getGenre()
+                                                                .equalsIgnoreCase(genre))
                                 .toList();
         }
 
